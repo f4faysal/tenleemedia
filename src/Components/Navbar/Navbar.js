@@ -13,7 +13,7 @@ const Navbar = () => {
 
   console.log(user)
   return (
-    <div className="bg-[url('https://tenleemedia.com/wp-content/uploads/2021/07/tenleemedia-slide.jpg')]">
+    <div className=" bg-[url('https://tenleemedia.com/wp-content/uploads/2021/07/tenleemedia-slide.jpg')]">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
