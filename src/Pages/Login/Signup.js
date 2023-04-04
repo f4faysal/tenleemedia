@@ -84,7 +84,7 @@ const Signup = () => {
           action=""
           className="space-y-4 ng-untouched ng-pristine ng-valid"
         >
-          <div className="space-y-1">
+          <div className="space-y-4">
             <div className="form-control">
               <label className="input-group input-group-vertical">
                 <span>Name</span>
@@ -100,9 +100,7 @@ const Signup = () => {
             </div>
 
             <div>
-              <label htmlFor="image" className="block mb-2 text-sm">
-                Select Image:
-              </label>
+             
               <input
                 className="file-input file-input-bordered file-input-sm w-full max-w-xs"
                 type="file"
@@ -149,16 +147,14 @@ const Signup = () => {
             </button>
           </div>
         </form>
-        <div className="flex items-center pt-4 space-x-1">
+        <div className="flex items-center pt-2 space-x-1">
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
-          <p className="px-3 text-sm dark:text-gray-400">
-            Signup with social accounts
-          </p>
+          Already account yet?
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
 
         <p className="px-6 text-sm text-center text-gray-400">
-          Already have an account yet?{" "}
+          {" "}
           <Link
             to="/login"
             className="hover:underline text-red-700 hover:text-secondary font-semibold"
