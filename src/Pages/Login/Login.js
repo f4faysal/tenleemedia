@@ -1,9 +1,9 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { useLocation, useNavigate } from "react-router-dom";
-import { setAuthToken } from "../../api/auth";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import PrimaryButton from "../../Components/Button/PrimaryButton";
 import SmallSpinner from "../../Components/Spinner/SmallSpinner";
+import { setAuthToken } from "../../api/auth";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
@@ -14,7 +14,7 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/dashboard/voters-info";
+  const from = location.state?.from?.pathname || "/";
 
   const handelSubmit = (event) => {
     event.preventDefault();
@@ -44,7 +44,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center pt-8   gap-5">
+    <div className="flex justify-center items-center pt-8  gap-5  bg-[url('https://tenleemedia.com/wp-content/uploads/2021/07/tenleemedia-slide.jpg')] h-screen w-full">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
         <div className="mb-8 text-center">
           <h1 className="my-3 text-4xl leading-[50px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-black to-red-600">
@@ -128,7 +128,7 @@ const Login = () => {
             </svg>
           </button> */}
         </div>
-        {/* <p className="px-6 text-sm text-center text-gray-400">
+        <p className="px-6 text-sm text-center text-gray-400">
           Don't have an account yet?{" "}
           <Link
             to="/signup"
@@ -137,7 +137,7 @@ const Login = () => {
             Sign up
           </Link>
           .
-        </p> */}
+        </p>
       </div>
     </div>
   );
