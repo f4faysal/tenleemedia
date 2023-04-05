@@ -47,9 +47,9 @@ const Login = () => {
   return (
     <div className="flex flex-col justify-center items-center pt-8  gap-5  bg-[url('https://tenleemedia.com/wp-content/uploads/2020/10/tenleemedia-works.jpg')] h-screen w-full bg-cover">
       <Logo />
-      <div className="flex flex-col max-w-md p-5 rounded-md sm:p-8  bg-white/50  text-gray-900 ">
-        <div className="text-center">
-          <p className="text-sm text-gray-600">
+      <div className="flex flex-col max-w-md p-5 rounded-md sm:p-8  bg-white/80  text-gray-900 ">
+        <div className="text-center pb-1">
+          <p className="text-sm text-gray-800">
             Sign in to access your account
           </p>
         </div>
@@ -62,13 +62,13 @@ const Login = () => {
           <div className="space-y-4">
             <div className="form-control">
               <label className="input-group input-group-vertical">
-                <span>Email</span>
+              
                 <input
                   type="email"
                   name="email"
                   id="email"
                   required
-                  placeholder="email@tenleemedia.com"
+                  placeholder="email@example.com"
                   className="input input-bordered  bg-white/50"
                 />
               </label>
@@ -76,7 +76,7 @@ const Login = () => {
 
             <div className="form-control">
               <label className="input-group input-group-vertical">
-                <span>Password</span>
+               
                 <input
                   type="password"
                   name="password"

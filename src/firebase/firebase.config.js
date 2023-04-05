@@ -10,7 +10,7 @@ const firebaseConfig = {
   projectId: "tenleemedia-app",
   storageBucket: "tenleemedia-app.appspot.com",
   messagingSenderId: "520101957120",
-  appId: "1:520101957120:web:70203eb65f0ed45b10d2e5",
+  appId: "1:520101957120:web:80d7f9a1d546409a10d2e5"
 };
 
 // Initialize Firebase
@@ -18,3 +18,6 @@ const firebaseConfig = {
 
 
  export default app;
+
+
+ 

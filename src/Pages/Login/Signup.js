@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SmallSpinner from "../../Components/Spinner/SmallSpinner";
 import { setAuthToken } from "../../api/auth";
@@ -22,43 +22,55 @@ const Signup = () => {
   const handelSubmit = (event) => {
     event.preventDefault();
     const name = event.target.name.value;
-    const image = event.target.image.files[0];
+    // const image = event.target.image.files[0];
     const email = event.target.email.value;
     const password = event.target.password.value;
+    const number = event.target.number.value;
+    const conpanyName = event.target.conpanyName.value;
 
-    console.log("zx ---->", image, name, email, password);
+    console.log(
+      "User Data  ---->",
+      // image,
+      name,
+      email,
+      password,
+      number,
+      conpanyName
+    );
 
-    const formData = new FormData();
-    formData.append("image", image);
-    // eb83f37c1fb8e7af42693f75d7c93456
-    const url =
-      "https://api.imgbb.com/1/upload?expiration=600&key=eb83f37c1fb8e7af42693f75d7c93456";
+    // const formData = new FormData();
+    // formData.append("image", image);
+    // // eb83f37c1fb8e7af42693f75d7c93456
+    // const url =
+    //   "https://api.imgbb.com/1/upload?expiration=600&key=eb83f37c1fb8e7af42693f75d7c93456";
 
-    fetch(url, { method: "POST", body: formData })
-      .then((res) => res.json())
-      .then((imgUrls) => {
-        const imgUrl = imgUrls.data.display_url;
-        //createUser
-        createUser(email, password)
-          .then((result) => {
-            //updateUserProfile
-            updateUserProfile(name, imgUrl).then(() => {
-              // setAuthToken(result, accountType);
-              toast.success("Register Success..");
-              setAuthToken(result);
-              setLoading(false);
-              navigate(from, { replace: true });
-            });
-            // console.log(" result :>> ", result);
-          })
-          .catch((err) => {
-            toast.error(err.message);
-            setLoading(false);
-            event.target.reset();
-          });
+    // fetch(url, { method: "POST", body: formData })
+    //   .then((res) => res.json())
+    //   .then((imgUrls) => {
+    //     const imgUrl = imgUrls.data.display_url;
+    //     //createUser
+
+    //   })
+    //   .catch((err) => {
+    //     toast.error(err.message);
+    //     setLoading(false);
+    //     event.target.reset();
+    //   });
+
+    createUser(email, password)
+      .then((result) => {
+        //updateUserProfile
+        updateUserProfile(name).then(() => {
+          // setAuthToken(result, accountType , conpanyName , number );
+          toast.success("Register Success..");
+          setAuthToken(result);
+          setLoading(false);
+          navigate(from, { replace: true });
+        });
+        // console.log(" result :>> ", result);
       })
       .catch((err) => {
-        toast.error(err.message);
+        toast.error("please try again");
         setLoading(false);
         event.target.reset();
       });
@@ -74,9 +86,9 @@ const Signup = () => {
 
   return (
     <div className="flex flex-col justify-center items-center pt-8  gap-5  bg-[url('https://tenleemedia.com/wp-content/uploads/2020/10/tenleemedia-works.jpg')] h-screen w-full bg-cover">
-      <div className="flex flex-col max-w-md p-6 m-2 rounded-md sm:p-10 bg-gray-100/50 text-gray-900">
+      <div className="flex flex-col max-w-md p-6 m-2 rounded-md sm:p-10 bg-gray-100/80 text-gray-900">
         <div className="mb-1 text-center">
-          <p className="text-sm text-gray-400">Create a new account</p>
+          <p className="text-sm text-gray-800">Create a new account</p>
         </div>
         <form
           onSubmit={handelSubmit}
@@ -85,9 +97,9 @@ const Signup = () => {
           className="space-y-4 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
+            {/* name */}
             <div className="form-control">
               <label className="input-group input-group-vertical">
-                <span>Name</span>
                 <input
                   type="text"
                   name="name"
@@ -98,9 +110,8 @@ const Signup = () => {
                 />
               </label>
             </div>
-
-            <div>
-             
+            {/* profile img */}
+            {/* <div>
               <input
                 className="file-input file-input-bordered file-input-sm w-full max-w-xs"
                 type="file"
@@ -108,25 +119,50 @@ const Signup = () => {
                 name="image"
                 accept="image/*"
               />
-            </div>
-
+            </div> */}
+            {/* phone Number */}
             <div className="form-control">
               <label className="input-group input-group-vertical">
-                <span>Email</span>
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
+                  type="tel"
+                  name="number"
+                  id="number"
                   required
-                  placeholder="email@tenleemedia.com"
+                  placeholder="Phone Number"
                   className="input input-bordered  bg-white/50"
                 />
               </label>
             </div>
 
+            {/* Company Name */}
             <div className="form-control">
               <label className="input-group input-group-vertical">
-                <span>Password</span>
+                {/* <span>Email</span> */}
+                <input
+                  type="text"
+                  name="conpanyName"
+                  id="text"
+                  placeholder="Company Name"
+                  className="input input-bordered  bg-white/50"
+                />
+              </label>
+            </div>
+            {/* email */}
+            <div className="form-control">
+              <label className="input-group input-group-vertical">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  placeholder="email@example.com"
+                  className="input input-bordered  bg-white/50"
+                />
+              </label>
+            </div>
+            {/* Password */}
+            <div className="form-control">
+              <label className="input-group input-group-vertical">
                 <input
                   type="password"
                   name="password"
