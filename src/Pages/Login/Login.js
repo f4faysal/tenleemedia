@@ -25,6 +25,11 @@ const Login = () => {
       .then((res) => {
         toast.success("Logine Success..");
         setAuthToken(res);
+
+        setTimeout(() => {
+          console.log("Delayed for 1 second.");
+        }, "1000");
+        
         navigate(from, { replace: true });
       })
       .catch((err) => {

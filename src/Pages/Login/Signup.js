@@ -179,7 +179,7 @@ const Signup = () => {
               type="submit "
               className="btn btn-outline btn-primary w-full "
             >
-              {loading ? <SmallSpinner></SmallSpinner> : "Sign in"}
+              {loading ? <SmallSpinner></SmallSpinner> : "Sign Up"}
             </button>
           </div>
         </form>
