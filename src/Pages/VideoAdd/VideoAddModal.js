@@ -1,32 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import Modals from "./Modals";
+
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+
 
 const VideoAddModal = () => {
-  return (
-    <div>
-      {/* The button to open modal */}
-      <label htmlFor="my-modal-6" className="btn">
-        open modal
-      </label>
 
-      {/* Put this part before </body> tag */}
-      <input type="checkbox" id="my-modal-6" className="modal-toggle" />
-      <div className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">
-            Congratulations random Internet user!
-          </h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to
-            use Wikipedia for free!
-          </p>
-          <div className="modal-action">
-            <label htmlFor="my-modal-6" className="btn">
-              Yay!
-            </label>
-          </div>
-        </div>
-      </div>
-    </div>
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = useState(!false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+  return (
+    <>
+    
+      <button className="btn" onClick={openModal}>Open Modal</button>
+      
+      <Modals
+        openModal={openModal}
+        modalIsOpen={modalIsOpen}
+        afterOpenModal={afterOpenModal}
+        closeModal={closeModal}
+        subtitle={subtitle}
+        customStyles={customStyles}
+      >
+
+
+      </Modals>
+    </>
   );
 };
 

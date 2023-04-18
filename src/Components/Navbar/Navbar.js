@@ -13,7 +13,7 @@ const Navbar = () => {
   const menu = (
     <>
       <li>
-        <Link> Reports </Link>
+        <Link to={"/dashboard/reports"}> Reports </Link>
       </li>
       <li>
         <Link> Open a ticket </Link>
@@ -44,10 +44,8 @@ const Navbar = () => {
               {menu}
             </ul>
           </div>
-
-        
         </div>
-        <Link to={'/'} className="navbar-center justify-center">
+        <Link to={"/"} className="navbar-center justify-center">
           <img
             className="w-2/5"
             src="https://tenleemedia.com/wp-content/uploads/2020/12/tenleemedia-website-logo.png"
@@ -67,7 +65,6 @@ const Navbar = () => {
               <div className="card-body items-center">
                 <div className="avatar">
                   <div className="w-20 rounded-full">
-                    <img alt="" />
                     <img
                       src={
                         user && user.photoURL
