@@ -5,10 +5,9 @@ const VideoPlay = () => (
     <video
       width="600px"
       height="400px"
-    //   onloadeddata="this.play();this.muted=true;"
+      //   onloadeddata="this.play();this.muted=true;"
       autoPlay
       loop
-      muted
       
     >
       <source

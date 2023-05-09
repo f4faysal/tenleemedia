@@ -39,7 +39,7 @@ const VideoAddModal = () => {
         openModal={openModal}
         modalIsOpen={modalIsOpen}
         afterOpenModal={afterOpenModal}
-        closeModal={closeModal}
+        // closeModal={closeModal}
         subtitle={subtitle}
         customStyles={customStyles}
       >

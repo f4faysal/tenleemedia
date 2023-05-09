@@ -2,11 +2,11 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 
-import Spinner from "../Components/Spinner/Spinner";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Login/Signup";
+import Reports from "../Pages/Menu-page/Reports/Reports";
 import ErrorPage from "../Pages/Shared/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 
@@ -21,11 +21,11 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             {" "}
-           <Home></Home>
+            <Home></Home>
           </PrivateRoute>
         ),
       },
-      // {
+      //     {
       //   path: "/login",
       //   element: <Login />,
       // },
@@ -44,7 +44,6 @@ const router = createBrowserRouter([
     element: <Signup />,
   },
 
-
   {
     path: "/dashboard/reports",
     element: (
@@ -55,7 +54,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/reports",
-        element: <Spinner />,
+        element: <Reports />,
+        // loader: () =>
+        //   fetch(`http://localhost:5000/test` , {
+        //     headers: {
+        //       authorization: `bearer ${localStorage.getItem("access-token")}`,
+        //     },
+        //   }),
       },
     ],
   },

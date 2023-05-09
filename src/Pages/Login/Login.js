@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SmallSpinner from "../../Components/Spinner/SmallSpinner";
@@ -7,8 +7,6 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import Logo from "./Logo";
 
 const Login = () => {
-  const [accuntType, setAccountType] = useState("user");
-
   const { signInWithGoogle, signin, resetPassword, loading, setLoading } =
     useContext(AuthContext);
 
@@ -29,7 +27,7 @@ const Login = () => {
         setTimeout(() => {
           console.log("Delayed for 1 second.");
         }, "1000");
-        
+
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -44,7 +42,6 @@ const Login = () => {
       setAuthToken(result);
       toast.success("Logine Success..");
       navigate(from, { replace: true });
-
       console.log("Google user :>> ", result);
     });
   };
@@ -67,7 +64,6 @@ const Login = () => {
           <div className="space-y-4">
             <div className="form-control">
               <label className="input-group input-group-vertical">
-              
                 <input
                   type="email"
                   name="email"
@@ -81,7 +77,6 @@ const Login = () => {
 
             <div className="form-control">
               <label className="input-group input-group-vertical">
-               
                 <input
                   type="password"
                   name="password"
