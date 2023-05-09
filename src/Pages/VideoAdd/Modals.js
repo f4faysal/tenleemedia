@@ -31,7 +31,12 @@ const Modals = ({
       </div>
 
       <form>
-      
+        {/* <input />
+        <button className="btn">tab navigation</button>
+        <button className="btn">stays</button>
+        <button className="btn">inside</button>
+        <button className="btn">the modal</button> */}
+
         <Link
           onClick={closeModal}
           className={`btn btn-info ${active ? "btn-disabled" : "btn-active"} `}

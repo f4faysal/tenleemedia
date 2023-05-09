@@ -16,13 +16,16 @@ const Navbar = () => {
         <Link to={"/dashboard/reports"}> Reports </Link>
       </li>
       <li>
-        <Link> Open a ticket </Link>
+        <Link to={"/dashboard/open-a-ticket"}> Open a ticket </Link>
       </li>
       <li>
-        <Link> Onboarding form </Link>
+        <Link to={"/dashboard/onboarding-form"}> Onboarding form </Link>
       </li>
       <li>
-        <Link> Book a call with your account manager </Link>
+        <Link to={"/dashboard/book-a-call-with-your-account-manager"}>
+          {" "}
+          Book a call with your account manager{" "}
+        </Link>
       </li>
     </>
   );
@@ -45,9 +48,9 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <Link to={"/"} className="navbar-center justify-center">
+        <Link className="navbar-center justify-center">
           <img
-            className="w-2/5"
+            className=" w-20 md:w-2/5 "
             src="https://tenleemedia.com/wp-content/uploads/2020/12/tenleemedia-website-logo.png"
             alt=""
           />{" "}

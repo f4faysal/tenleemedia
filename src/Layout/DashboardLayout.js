@@ -29,13 +29,13 @@ const DashboardLayout = () => {
                 <Link to={"/dashboard/reports"}> Reports </Link>
               </li>
               <li>
-                <Link> Open a ticket </Link>
+                <Link to={"/dashboard/open-a-ticket"}> Open a ticket </Link>
               </li>
               <li>
-                <Link> Onboarding form </Link>
+                <Link to={"/dashboard/onboarding-form"}> Onboarding form </Link>
               </li>
               <li>
-                <Link> Book a call with your account manager </Link>
+                <Link to={"/dashboard/book-a-call-with-your-account-manager"}> Book a call with your account manager </Link>
               </li>
             </ul>
           </aside>
