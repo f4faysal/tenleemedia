@@ -7,8 +7,14 @@ import { AuthContext } from "../../contexts/AuthProvider";
 import Logo from "./Logo";
 
 const Login = () => {
-  const { signInWithGoogle, signin, resetPassword, loading, setLoading } =
-    useContext(AuthContext);
+  const {
+    signInWithGoogle,
+    signin,
+    resetPassword,
+    loading,
+    setLoading,
+    setIsLoggedIn,
+  } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,9 +30,10 @@ const Login = () => {
         toast.success("Logine Success..");
         setAuthToken(res);
 
-        setTimeout(() => {
-          console.log("Delayed for 1 second.");
-        }, "1000");
+        // setTimeout(() => {
+        //   console.log("Delayed for 1 second.");
+        // }, "1000");
+        // setIsLoggedIn false for user login
 
         navigate(from, { replace: true });
       })

@@ -6,23 +6,26 @@ const Reports = () => {
   const [text, setTestss] = useState(" ");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/test`, {
-      headers: {
-        authorization: `bearer ${localStorage.getItem("access-token")}`,
-      },
-    })
-      .then((res) => {
-        if (res.status === 401 || res.status === 403) {
-          logout();
-        }
-        return res.json();
-      })
-      .then((data) => setTestss(data));
+    async function fetchTestJSON() {
+      const res = await fetch(`http://localhost:5000/test`, {
+        headers: {
+          authorization: `bearer ${localStorage.getItem("access-token")}`,
+        },
+      });
+
+      if (res.status === 401 || res.status === 403) {
+        logout();
+      }
+      const test = await res.json();
+      return test;
+    }
+
+    fetchTestJSON().then((data) => setTestss(data));
   }, []);
 
   console.log(text);
 
-  return <div>hi {text.message}</div>;
+  return <div>“Report coming soon” {text.message}</div>;
 };
 
 export default Reports;
