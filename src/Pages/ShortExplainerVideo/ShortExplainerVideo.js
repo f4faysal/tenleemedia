@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import vi from "./video/videoplayback.mp4";
 
-function ShortExplainerVideo({handleVideoEnd}) {
+function ShortExplainerVideo({ handleVideoEnd }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -29,10 +29,19 @@ function ShortExplainerVideo({handleVideoEnd}) {
   }, []);
 
   return (
-    <video ref={videoRef} autoPlay onEnded={handleVideoEnd}>
-      <source src={vi} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+    <div className="h-screen flex items-center justify-center bg-black">
+      <video
+        className="p-5 bg-slate-800"
+        width="720"
+        height="490"
+        ref={videoRef}
+        autoPlay
+        onEnded={handleVideoEnd}
+      >
+        <source src={vi} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   );
 }
 

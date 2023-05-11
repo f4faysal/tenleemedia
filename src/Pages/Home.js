@@ -13,7 +13,10 @@ const Home = () => {
   useEffect(() => {
     // TODO: Check if the user is already logged in and set the `isLoggedIn` state accordingly.
     // For demo purposes, we'll always assume the user is not logged in on initial load.
-    setIsLoggedIn(false);
+
+    setTimeout(() => {
+      setIsLoggedIn(false);
+    }, 0);
   }, []);
 
   const handleVideoEnd = () => {
@@ -26,15 +29,20 @@ const Home = () => {
 
   if (!isLoggedIn) {
     if (showCalendly) {
-     return <ScheduleYourOnboarding handleCalendlyClose={handleCalendlyClose} setShowCalendly={setShowCalendly}/>
+      return (
+        <ScheduleYourOnboarding
+          handleCalendlyClose={handleCalendlyClose}
+          setShowCalendly={setShowCalendly}
+        />
+      );
     } else if (showVideo) {
-     return <ShortExplainerVideo handleVideoEnd={handleVideoEnd} />;
+      return <ShortExplainerVideo handleVideoEnd={handleVideoEnd} />;
     } else {
       setShowVideo(true);
       console.log("uswe not login");
     }
   } else {
-    navigate("/dashboard/reports");
+    return navigate("/dashboard/reports");
   }
 };
 
