@@ -5,10 +5,11 @@ import ShortExplainerVideo from "./ShortExplainerVideo/ShortExplainerVideo";
 
 const Home = () => {
   // const { setShowVideo, showVideo } = useContext(AuthContext);
-  const navigate = useNavigate();
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showCalendly, setShowCalendly] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // TODO: Check if the user is already logged in and set the `isLoggedIn` state accordingly.
@@ -18,6 +19,15 @@ const Home = () => {
       setIsLoggedIn(false);
     }, 0);
   }, []);
+
+  const handleNavigate = () => {
+    // Navigate to a different route
+    // history.push("/dashboard");
+    navigate("/dashboard");
+
+    // throw redirect("/login");
+    
+  };
 
   const handleVideoEnd = () => {
     setShowCalendly(true);
@@ -29,8 +39,11 @@ const Home = () => {
 
   if (!isLoggedIn) {
     if (showCalendly) {
+      console.log("setShowVideo true", showCalendly);
+
       return (
         <ScheduleYourOnboarding
+          setIsLoggedIn={setIsLoggedIn}
           handleCalendlyClose={handleCalendlyClose}
           setShowCalendly={setShowCalendly}
         />
@@ -39,10 +52,12 @@ const Home = () => {
       return <ShortExplainerVideo handleVideoEnd={handleVideoEnd} />;
     } else {
       setShowVideo(true);
-      console.log("uswe not login");
+      console.log("setShowVideo true");
     }
   } else {
-    return navigate("/dashboard/reports");
+    console.log("return navigate('/dashboard/reports')");
+    // return navigate("/dashboard");
+    return handleNavigate();
   }
 };
 

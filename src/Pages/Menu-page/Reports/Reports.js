@@ -1,31 +1,73 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import SmallSpinner from "../../../Components/Spinner/SmallSpinner";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Reports = () => {
   const { user, logout } = useContext(AuthContext);
-  const [text, setTestss] = useState(" ");
+  // const [text, setTestss] = useState(" ");
 
-  useEffect(() => {
-    async function fetchTestJSON() {
-      const res = await fetch(`http://localhost:5000/test`, {
-        headers: {
-          authorization: `bearer ${localStorage.getItem("access-token")}`,
-        },
-      });
+  const link = process.env.REACT_APP_SERVER_URL;
 
-      if (res.status === 401 || res.status === 403) {
-        logout();
+  // useEffect(() => {
+  //   async function fetchTestJSON() {
+  //     const res = await fetch(`${link}/test`, {
+  //       headers: {
+  //         authorization: `bearer ${localStorage.getItem("access-token")}`,
+  //       },
+  //     });
+
+  //     const test = await res.json();
+  //     setTimeout(() => {
+  //       if (res.status === 401 || res.status === 403) {
+  //         logout();
+  //       }
+  //     }, 5000);
+  //     return test;
+  //   }
+
+  //   fetchTestJSON().then((data) => setTestss(data));
+  // }, [ link , logout]);
+
+  const {
+    data: test,
+    isLoading,
+    refetch,
+  } = useQuery({
+    queryKey: ["test"],
+    queryFn: async () => {
+      try {
+        const res = await fetch(`${link}/test`, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem("access-token")}`,
+          },
+        });
+        if (!isLoading) {
+          if (res.status === 401 || res.status === 403) {
+            logout();
+          }
+        }
+        const data = await res.json();
+        return data;
+      } catch (error) {
+        console.log(error);
       }
-      const test = await res.json();
-      return test;
-    }
+    },
+  });
 
-    fetchTestJSON().then((data) => setTestss(data));
-  }, []);
+  if (isLoading) {
+    console.log("SmallSpinner");
+    return <SmallSpinner></SmallSpinner>;
+  }
 
-  console.log(text);
+  console.log(test);
 
-  return <div>“Report coming soon” {text.message}</div>;
+  return (
+    <div>
+      “Report coming soon” {test.message}
+      <h1>{link}</h1>
+    </div>
+  );
 };
 
 export default Reports;

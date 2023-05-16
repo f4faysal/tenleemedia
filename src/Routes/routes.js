@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 
 import DashboardLayout from "../Layout/DashboardLayout";
+import AsminDashborard from "../Pages/Admin/AsminDashborard";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Login/Signup";
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      {
+        path: "/dashboard/admin",
+        element: <AsminDashborard/>,
+      },
       {
         path: "/dashboard/reports",
 
