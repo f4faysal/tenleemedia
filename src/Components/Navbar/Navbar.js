@@ -1,7 +1,6 @@
 import {
   ArrowRightCircleIcon,
-  Bars2Icon,
-  UserIcon,
+  UserIcon
 } from "@heroicons/react/24/solid";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -10,43 +9,14 @@ import { AuthContext } from "../../contexts/AuthProvider";
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
-  const menu = (
-    <>
-      <li>
-        <Link to={"/dashboard/reports"}> Reports </Link>
-      </li>
-      <li>
-        <Link to={"/dashboard/open-a-ticket"}> Open a ticket </Link>
-      </li>
-      <li>
-        <Link to={"/dashboard/onboarding-form"}> Onboarding form </Link>
-      </li>
-      <li>
-        <Link to={"/dashboard/book-a-call-with-your-account-manager"}>
-          {" "}
-          Book a call with your account manager{" "}
-        </Link>
-      </li>
-    </>
-  );
+
 
   console.log(user);
   return (
     <div className=" bg-black">
       <div className="navbar container mx-auto">
         <div className="navbar-start">
-          <div className="dropdown block lg:hidden">
-            <label tabIndex={0} className="btn btn-ghost btn-circle">
-              <Bars2Icon className="text-white w-1/2" />
-            </label>
-
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              {menu}
-            </ul>
-          </div>
+         
         </div>
         <Link className="navbar-center justify-center">
           <img

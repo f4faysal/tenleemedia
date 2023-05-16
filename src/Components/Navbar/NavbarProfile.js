@@ -7,7 +7,7 @@ const NavbarProfile = ({ logout, user }) => {
     <div>
       <div
         tabIndex={0}
-        className="dropdown-content card card-compact md:w-72 p-2 shadow bg-primary text-primary-content"
+        className="dropdown-content card card-compact bg-indigo-950 md:w-72 p-2 shadow   text-primary-content"
       >
         <div className="card-body items-center">
           <div className="avatar">
